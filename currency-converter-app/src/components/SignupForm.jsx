@@ -20,10 +20,12 @@ const SignupForm = () => {
         try {
             //signup authentication with firebase
             await createUserWithEmailAndPassword (auth, email, password);
+        
             alert("User signed up successfully");
         }
         catch(err){
             setError("Signup failed");
+            //Display error
             alert.error(err);
         }
     };
