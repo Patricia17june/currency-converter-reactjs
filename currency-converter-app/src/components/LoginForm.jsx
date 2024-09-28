@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const Navigate = useNavigate(); //hook for navigation
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -13,6 +15,9 @@ const LoginForm = () => {
             //Login authentication with firebase
             await signInWithEmailAndPassword(auth, email, password);
             alert("user logged in successfully");
+
+            //redirect the user after successful login
+            Navigate("/homepage")
         }
         catch (err){
             setError("Invalid login credentials");
