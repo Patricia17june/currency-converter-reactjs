@@ -22,7 +22,7 @@ const LoginForm = () => {
         }
         catch (err){
             setError("Invalid login credentials");
-            alert("err");
+            alert("err.message");
         }
     };
 
