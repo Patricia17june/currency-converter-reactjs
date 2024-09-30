@@ -38,6 +38,14 @@ const HomePage = () => {
 
     //handle currency conversioon
     const convertCurrency = () => {
+        //ensure that amount is a valid number greater than 0
+        const parsedAmount = parseFloat(amount);
+        if (isNaN(parsedAmount) || parsedAmount  <= 0) {
+            setError("please enter a valid amount greater than zero")
+            //reset converted amount
+            setConvertedAmount(0);
+            return;
+        }
         //check if the exchange rate for the selected currency exist
         if (exchangeRates[toCurrency]) {
             //get conversion rrate 
