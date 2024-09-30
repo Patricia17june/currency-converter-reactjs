@@ -31,7 +31,7 @@ const SignupForm = () => {
         catch(err){
             setError("Signup failed");
             //Display error
-            alert.error(err);
+            alert(err.message);
         }
     };
 
@@ -82,7 +82,7 @@ const SignupForm = () => {
                     Sign Up
                 </button>
                 <p className="mt-4 text-center font-semibold">
-                  Have an account? <a href="/login" class="text-blue-500 hover:underline font-semibold text-2xl">Log in</a>
+                  Have an account? <a href="/login" className="text-blue-500 hover:underline font-semibold text-2xl">Log in</a>
                 </p>
             </form>
         </div>
