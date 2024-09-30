@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";//Creates a new user account associated with the specified email address and password
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../assets/cc-images/coins-1.jpg";
 
 const SignupForm = () => {
     const [email, setEmail] = useState('');
@@ -35,14 +36,14 @@ const SignupForm = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <form onSubmit={handleSignup} className="bg-white p-6 rounded shadow-md">
-                <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+        <div className="flex items-center justify-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
+            <form onSubmit={handleSignup} className="bg-white/60 p-8 rounded-lg shadow-lg w-full max-w-sm">
+                <h1 className="text-5xl font-bold mb-6 text-center">Sign Up</h1>
 
                 {error &&<p className="text-red-500">{error}</p>}
 
                 <div className="mb-4">
-                    <label>Email</label>
+                    <label className="block text-black font-semibold text-2xl">Email</label>
                     <input
                     type="email"
                     value={email}
@@ -53,7 +54,7 @@ const SignupForm = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label>Password</label>
+                    <label className="block text-black font-semibold text-2xl">Password</label>
                     <input
                     type="password"
                     value={password}
@@ -64,7 +65,7 @@ const SignupForm = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label>Confirm Password</label>
+                    <label className="block text-black font-semibold text-2xl">Confirm Password</label>
                     <input
                     type="password"
                     value={confirmpassword}
@@ -76,7 +77,7 @@ const SignupForm = () => {
 
                 <button 
                  type="submit"
-                 className="bg-blue-500 text-white w-full py-2 rounded hover:bg-blue-600"
+                 className="bg-blue-500 text-white w-full py-2 hover:bg-blue-600 rounded-full font-bold text-2xl"
                  >
                     Sign Up
                 </button>

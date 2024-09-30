@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import backgroundImage from "../assets/cc-images/coins-1.jpg";
 
 const LoginForm = () => {
     const [email, setEmail] = useState('');
@@ -26,14 +27,14 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <form onSubmit={handleLogin}className="bg-white p-6 rounded shadow-md">
-            <h1 className="text-2xl font-bold mb-4">Login</h1>
+        <div className="flex items-center justify-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
+        <form onSubmit={handleLogin}className="bg-white/60 p-6 rounded-lg shadow-lg w-full max-w-sm">
+            <h1 className="text-5xl font-bold mb-6 text-center">Login</h1>
 
             {error && <p className="text-red-500">{error}</p>}
 
             <div className="mb-4">
-             <label className="block text-gray-700">Email</label>
+             <label className="block text-black font-semibold text-2xl">Email</label>
              <input 
              type="email"
              value={email}
@@ -43,8 +44,8 @@ const LoginForm = () => {
              />
             </div>
 
-             <div className="mb-4">
-             <label className="block text-gray-700">Password</label>
+            <div className="mb-4">
+             <label className="block text-black font-semibold text-2xl">Password</label>
              <input 
              type="password"
              value={password}
@@ -56,7 +57,7 @@ const LoginForm = () => {
 
             <button 
              type="submit"
-             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+             className="bg-blue-500 hover:bg-blue-700 text-white font-extrabold py-2 px-4 rounded-full text-2xl"
              >
              Login
             </button>

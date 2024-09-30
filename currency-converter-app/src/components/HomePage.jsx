@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"; 
 import axios from "axios";
 import useDarkMode from "../useDarkMode";
+import backgroundImage from "../assets/cc-images/coins-2.jpg";
 
 const HomePage = () => {
     const { darkMode, setDarkMode } = useDarkMode();
@@ -56,38 +57,38 @@ const HomePage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center max-w-4xl mx-auto p-8 h-screen">
+        <div className="flex justify-center items-center max-w-4xl mx-auto p-20 min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
             <div className="w-full">
-            <div className="container mx-auto p-8 bg-white dark:bg-gray-900 rounded-lg shadow-lg">
-                <h1 className="text-2xl font-bold text-center mb-6">Currency Converter</h1>
+            <div className="container mx-auto p-4 bg-white/75 dark:bg-gray-900 rounded-lg shadow-lg">
+                <h1 className="text-4xl font-bold text-center mb-4">Currency Converter</h1>
 
                 {/* Darkmode toggle button*/}
-                <div className="mb-10 flex justify-center">
+                <div className="mb-6 flex justify-center">
                     <button
                         onClick={() => setDarkMode(!darkMode)}
-                        className="bg-gray-800 text-white px-6 py-2 rounded-md"
+                        className="bg-gray-800 text-white px-4 rounded-md"
                     >
                         Toggle {darkMode ? "Light" : "Dark"} Mode
                     </button>
                 </div>
 
                 {/*show loading message while fetching data */}
-                {loading && <p className="text-center mb-6">Loading exchange rates...</p>}
-                {error && <p className="text-center text-red-500 mb-6">{error}</p>} {/*show error message*/}
+                {loading && <p className="text-center">Loading exchange rates...</p>}
+                {error && <p className="text-center text-red-500">{error}</p>} {/*show error message*/}
 
                 {/*show form once data is loaded and there is no error */}
                 {!loading && !error && (
-                    <form onSubmit={handleSubmit} className="space-y-8 flex flex-col items-center">
+                    <form onSubmit={handleSubmit} className="flex flex-col items-center">
                         {/* From currency selector */}
                             <div className="w-full max-w-xs">
-                                <label htmlFor="from-currency" className="block font-semibold text-center mb-3">
+                                <label htmlFor="from-currency" className="block text-black font-semibold text-2xl text-left">
                                     From:
                                 </label>
                                 <select 
                                     id="from-currency"
                                     value={fromCurrency}
                                     onChange={(e) => setFromCurrency(e.target.value)}
-                                    className="border p-3 rounded-md w-full"
+                                    className="border p-2 rounded-md w-full mb-3"
                                 >
                                     {Object.keys(exchangeRates).map((currency) => (
                                         <option key={currency} value={currency}>
@@ -99,14 +100,14 @@ const HomePage = () => {
 
                     {/* To currency selector */}
                             <div className="w-full max-w-xs">
-                                <label htmlFor="to-currency" className="block font-semibold text-center mb-3">
+                                <label htmlFor="to-currency" className="block text-black font-semibold text-2xl text-left">
                                     To:
                                 </label>
                                 <select
                                     id="to-currency"
                                     value={toCurrency}
                                     onChange={(e) => setToCurrency(e.target.value)}
-                                    className="border p-3 rounded-md w-full"
+                                    className="border p-2 rounded-md w-full mb-3"
                                 >
                                     {Object.keys(exchangeRates).map((currency) => (
                                         <option key={currency} value={currency}>
@@ -119,7 +120,7 @@ const HomePage = () => {
 
                         {/* Amount input */}
                         <div className="w-full max-w-xs">
-                            <label htmlFor="amount" className="block font-semibold text-center mb-3">
+                            <label htmlFor="amount" className="block text-black font-semibold text-2xl text-left">
                                 Amount:
                             </label>
                             <input
@@ -127,7 +128,7 @@ const HomePage = () => {
                                 id="amount"
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
-                                className="border p-3 rounded-md w-full"
+                                className="border p-2 rounded-md w-full mb-4"
                                 min="1"
                             />
                         </div>
@@ -135,7 +136,7 @@ const HomePage = () => {
                         {/* Convert button */}
                         <button
                             type="submit"
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-full w-full max-w-xs"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-full w-full max-w-xs border mb-7"
                         >
                             Convert
                         </button>
@@ -144,7 +145,7 @@ const HomePage = () => {
 
                 {/* Display the converted amount */}
                 {convertedAmount > 0 && (
-                    <div className="mt-8 text-center">
+                    <div className="mt-4 text-center">
                         <h2 className="text-2xl font-semibold">
                             {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
                         </h2>
