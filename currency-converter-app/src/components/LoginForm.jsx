@@ -8,7 +8,7 @@ const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const Navigate = useNavigate(); //hook for navigation
+    const navigate = useNavigate(); //hook for navigation
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -18,7 +18,7 @@ const LoginForm = () => {
             alert("user logged in successfully");
 
             //redirect the user after successful login
-            Navigate("/homepage")
+            navigate("/homepage")
         }
         catch (err){
             setError("Invalid login credentials");
