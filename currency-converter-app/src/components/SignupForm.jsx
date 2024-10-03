@@ -37,7 +37,7 @@ const SignupForm = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
-            <form onSubmit={handleSignup} className="bg-white/60 p-8 rounded-lg shadow-lg w-full max-w-sm">
+            <form onSubmit={handleSignup} className="bg-white/60 py-4 px-6 rounded-lg shadow-lg w-full max-w-sm flex flex-col">
                 <h1 className="text-5xl font-bold mb-6 text-center">Sign Up</h1>
 
                 {error &&<p className="text-red-500">{error}</p>}
@@ -77,7 +77,7 @@ const SignupForm = () => {
 
                 <button 
                  type="submit"
-                 className="bg-blue-500 text-white w-full py-2 hover:bg-blue-600 rounded-full font-bold text-2xl"
+                 className="bg-blue-500 text-white py-2 hover:bg-blue-600 rounded-full font-bold text-2xl"
                  >
                     Sign Up
                 </button>
