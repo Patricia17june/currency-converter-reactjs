@@ -28,13 +28,13 @@ const LoginForm = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
-        <form onSubmit={handleLogin} className="bg-white/60 p-12 px-4 rounded-lg shadow-lg w-full max-w-sm flex flex-col">
-            <h1 className="text-5xl font-bold mb-6 text-center">Login</h1>
+        <form onSubmit={handleLogin} className="bg-white/60 p-8 rounded-lg shadow-lg w-full max-w-md flex flex-col">
+            <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center">Login</h1>
 
             {error && <p className="text-red-500">{error}</p>}
 
             <div className="mb-4">
-             <label className="block text-black font-semibold text-2xl">Email</label>
+             <label className="block text-black font-semibold text-lg">Email</label>
              <input 
              type="email"
              value={email}
@@ -45,7 +45,7 @@ const LoginForm = () => {
             </div>
 
             <div className="mb-4">
-             <label className="block text-black font-semibold text-2xl">Password</label>
+             <label className="block text-black font-semibold text-lg">Password</label>
              <input 
              type="password"
              value={password}
@@ -57,7 +57,7 @@ const LoginForm = () => {
 
             <button 
              type="submit"
-             className="bg-blue-500 hover:bg-blue-700 text-white font-extrabold py-2 rounded-full text-2xl mb-4"
+             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-full text-xl mb-4"
              >
              Login
             </button>

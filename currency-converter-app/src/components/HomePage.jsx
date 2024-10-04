@@ -95,8 +95,8 @@ const HomePage = () => {
     return (
         <div className="flex justify-center items-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
             <div>
-            <div className="container mx-auto bg-white/80 dark:bg-gray-900 rounded-lg shadow-lg px-24">
-                <h1 className="text-4xl font-bold text-center mb-4">Currency Converter</h1>
+            <div className="container mx-auto bg-white/80 dark:bg-gray-900 rounded-lg shadow-lg px-4 py-8 sm:px-6 lg-8">
+                <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">Currency Converter</h1>
 
                 {/* Display the favorite pairs */}
                 {favoritePairs.length > 0 && (
@@ -128,10 +128,10 @@ const HomePage = () => {
 
                 {/*show form once data is loaded and there is no error */}
                 {!loading && !error && (
-                    <form onSubmit={handleSubmit} className="flex flex-col items-center">
+                    <form onSubmit={handleSubmit} className="flex flex-col sm:space-x-4 items-center">
                         {/* From currency selector */}
-                            <div className="w-full max-w-xs">
-                                <label htmlFor="from-currency" className="block text-black font-semibold text-2xl text-left">
+                            <div className="w-full max-w-xs mb-4 sm:mb-0">
+                                <label htmlFor="from-currency" className="block text-black font-semibold text-2xl  sm:text-2xl text-left">
                                     From:
                                 </label>
                                 <select 
@@ -149,8 +149,8 @@ const HomePage = () => {
                             </div>
 
                         {/* To currency selector */}
-                            <div className="w-full max-w-xs">
-                                <label htmlFor="to-currency" className="block text-black font-semibold text-2xl text-left">
+                            <div className="w-full max-w-xs mb-4 sm:mb-0">
+                                <label htmlFor="to-currency" className="block text-black font-semibold text-xl sm:text-2xl text-left">
                                     To:
                                 </label>
                                 <select
@@ -168,8 +168,8 @@ const HomePage = () => {
                             </div>
 
                         {/* Amount input */}
-                        <div className="w-full max-w-xs">
-                            <label htmlFor="amount" className="block text-black font-semibold text-2xl text-left">
+                        <div className="w-full max-w-xs mb-4 sm:mb-0">
+                            <label htmlFor="amount" className="block text-black font-semibold text-xl sm:text-2xl text-left">
                                 Amount:
                             </label>
                             <input
@@ -185,7 +185,7 @@ const HomePage = () => {
                         {/* Convert button */}
                         <button
                             type="submit"
-                            className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 rounded-full w-full max-w-xs border mb-7"
+                            className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full sm:mt-0 mt-4"
                         >
                             Convert
                         </button>
@@ -195,7 +195,7 @@ const HomePage = () => {
                             <button
                                 type="button"
                                 onClick={handleSaveFavorite}
-                                className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-8 rounded-full w-full max-w-xs border mb-7"
+                                className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full sm:mt-0 mt-4"
                                 >
                                     Save favorite Pair
                             </button>
@@ -204,7 +204,7 @@ const HomePage = () => {
                     {/* Display the converted amount */}
                      {convertedAmount > 0 && (
                       <div className="mt-4 text-center">
-                          <h2 className="text-2xl font-semibold">
+                          <h2 className="text-2xl sm:text-3xl font-semibold">
                              {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
                          </h2>
                       </div>

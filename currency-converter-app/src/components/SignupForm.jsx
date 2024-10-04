@@ -37,24 +37,24 @@ const SignupForm = () => {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
-            <form onSubmit={handleSignup} className="bg-white/60 py-4 px-6 rounded-lg shadow-lg w-full max-w-sm flex flex-col">
-                <h1 className="text-5xl font-bold mb-6 text-center">Sign Up</h1>
+            <form onSubmit={handleSignup} className="bg-white/60 py-6 px-8 rounded-lg shadow-lg w-full max-w-md flex flex-col">
+                <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-center">Sign Up</h1>
 
                 {error &&<p className="text-red-500">{error}</p>}
 
                 <div className="mb-4">
-                    <label className="block text-black font-semibold text-2xl">Email</label>
+                    <label className="block text-black font-semibold text-lg">Email</label>
                     <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full p-2 border border-gray-300 rounded"
+                    className="w-full p-2 border border-gray-300 rounded dark"
                     required
                      />
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-black font-semibold text-2xl">Password</label>
+                    <label className="block text-black font-semibold text-lg">Password</label>
                     <input
                     type="password"
                     value={password}
@@ -65,7 +65,7 @@ const SignupForm = () => {
                 </div>
 
                 <div className="mb-4">
-                    <label className="block text-black font-semibold text-2xl">Confirm Password</label>
+                    <label className="block text-black font-semibold text-lg">Confirm Password</label>
                     <input
                     type="password"
                     value={confirmpassword}
@@ -77,12 +77,12 @@ const SignupForm = () => {
 
                 <button 
                  type="submit"
-                 className="bg-blue-500 text-white py-2 hover:bg-blue-600 rounded-full font-bold text-2xl"
+                 className="bg-blue-500 text-white py-2 hover:bg-blue-600 rounded-full font-bold text-xl"
                  >
                     Sign Up
                 </button>
                 <p className="mt-4 text-center font-semibold">
-                  Have an account? <a href="/login" className="text-blue-500 hover:underline font-semibold text-2xl">Log in</a>
+                  Have an account? <a href="/login" className="text-blue-500 hover:underline font-semibold">Log in</a>
                 </p>
             </form>
         </div>
