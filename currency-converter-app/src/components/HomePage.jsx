@@ -93,18 +93,18 @@ const HomePage = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${backgroundImage})`}}>
+        <div className={`flex justify-center items-center min-h-screen bg-cover bg-no-repeat bg-center ${darkMode ? 'bg-gray-900' : ''}`} style={{ backgroundImage: `url(${backgroundImage})`}}>
             <div>
-            <div className="container mx-auto bg-white/80 dark:bg-gray-900 rounded-lg shadow-lg px-4 py-8 sm:px-6 lg-8">
-                <h1 className="text-3xl sm:text-4xl font-bold text-center mb-6">Currency Converter</h1>
+            <div className={`container mx-auto bg-white/80 dark:bg-gray-900 rounded-lg shadow-lg px-4 py-8 sm:px-6 lg-8 ${darkMode ? 'bg-gray-800' : 'bg-white/80'}`}>
+                <h1 className={`text-3xl sm:text-4xl font-bold text-center mb-3 ${darkMode ? 'text-white' : 'text-black'}`}>Currency Converter</h1>
 
                 {/* Display the favorite pairs */}
                 {favoritePairs.length > 0 && (
-                    <div className="mt-4">
-                        <h2 className="font-semibold text-2xl mb-4">Favourite pairs:</h2>
+                    <div className="mt-2">
+                        <h2 className={`font-semibold text-2xl mb-4 ${darkMode ? 'text-white' : 'text-black'}`}>Favourite pairs:</h2>
                         <ul className="list-disc pl-6">
                             {favoritePairs.map((pair, index) => (
-                               <li key={index}>
+                               <li key={index} className={`${darkMode ? 'text-white' : 'text-black'}`}>
                                 {pair.from} → {pair.to}
                                </li> 
                             ))}
@@ -113,7 +113,7 @@ const HomePage = () => {
                 )}
 
                 {/* Darkmode toggle button*/}
-                <div className="mb-6 flex justify-center">
+                <div className="mb-4 flex justify-center">
                     <button
                         onClick={() => setDarkMode(!darkMode)}
                         className="bg-gray-800 text-white px-4 rounded-md"
@@ -131,14 +131,14 @@ const HomePage = () => {
                     <form onSubmit={handleSubmit} className="flex flex-col sm:space-x-4 items-center">
                         {/* From currency selector */}
                             <div className="w-full max-w-xs mb-4 sm:mb-0">
-                                <label htmlFor="from-currency" className="block text-black font-semibold text-2xl  sm:text-2xl text-left">
+                                <label htmlFor="from-currency" className={`block text-black font-semibold text-2xl sm:text-2xl text-left ${darkMode ? 'text-white' : 'text-black'}`}>
                                     From:
                                 </label>
                                 <select 
                                     id="from-currency"
                                     value={fromCurrency}
                                     onChange={(e) => setFromCurrency(e.target.value)}
-                                    className="border p-2 rounded-md w-full mb-3"
+                                    className="border p-2 rounded-md w-full"
                                 >
                                     {Object.keys(exchangeRates).map((currency) => (
                                         <option key={currency} value={currency}>
@@ -150,14 +150,14 @@ const HomePage = () => {
 
                         {/* To currency selector */}
                             <div className="w-full max-w-xs mb-4 sm:mb-0">
-                                <label htmlFor="to-currency" className="block text-black font-semibold text-xl sm:text-2xl text-left">
+                                <label htmlFor="to-currency" className={`block text-black font-semibold text-xl sm:text-2xl text-left ${darkMode ? 'text-white' : 'text-black'}`}>
                                     To:
                                 </label>
                                 <select
                                     id="to-currency"
                                     value={toCurrency}
                                     onChange={(e) => setToCurrency(e.target.value)}
-                                    className="border p-2 rounded-md w-full mb-3"
+                                    className="border p-2 rounded-md w-full"
                                 >
                                     {Object.keys(exchangeRates).map((currency) => (
                                         <option key={currency} value={currency}>
@@ -169,7 +169,7 @@ const HomePage = () => {
 
                         {/* Amount input */}
                         <div className="w-full max-w-xs mb-4 sm:mb-0">
-                            <label htmlFor="amount" className="block text-black font-semibold text-xl sm:text-2xl text-left">
+                            <label htmlFor="amount" className={`block text-black font-semibold text-xl sm:text-2xl text-left ${darkMode ? 'text-white' : 'text-black'}`}>
                                 Amount:
                             </label>
                             <input
@@ -177,34 +177,34 @@ const HomePage = () => {
                                 id="amount"
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
-                                className="border p-2 rounded-md w-full mb-4"
+                                className="border p-2 rounded-md w-full"
                                 min="1"
                             />
                         </div>
 
                         {/* Convert button */}
-                        <button
-                            type="submit"
-                            className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full sm:mt-0 mt-4"
-                        >
-                            Convert
-                        </button>
+                        <div className="flex justify-between mt-9">
+                         <button
+                             type="submit"
+                             className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full sm:mt-0 mt-4"
+                            >
+                             Convert
+                         </button>
                         
-                        {/*save favorite button*/}
-                        <div>
-                            <button
+                         {/*save favorite button*/}
+                          <button
                                 type="button"
                                 onClick={handleSaveFavorite}
                                 className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-6 rounded-full sm:mt-0 mt-4"
                                 >
                                     Save favorite Pair
-                            </button>
+                          </button>
                         </div>
 
                     {/* Display the converted amount */}
                      {convertedAmount > 0 && (
                       <div className="mt-4 text-center">
-                          <h2 className="text-2xl sm:text-3xl font-semibold">
+                          <h2 className={`text-2xl sm:text-3xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>
                              {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
                          </h2>
                       </div>
