@@ -15,7 +15,6 @@ const HomePage = () => {
     const [favoritePairs, setFavoritePairs] = useState([]);
     const API_KEY = import.meta.env.VITE_EXCHANGE_RATE_API_KEY;
 
-
         //fetch exchange rates fot the selected currency
         useEffect(() => {
         const fetchExchangesRates = async () => {
@@ -24,6 +23,10 @@ const HomePage = () => {
                 const response = await axios.get(
                     `https://v6.exchangerate-api.com/v6/${API_KEY}/latest/${fromCurrency}`
                 );
+                //error in response(api)
+                if (!response.data || !response.data.conversion_rates) {
+                    throw new error("Invalid API request")
+                }
                 //set  exchange rates
                 setExchangeRates(response.data.conversion_rates);
                 //data loaded
@@ -65,6 +68,8 @@ const HomePage = () => {
             const rate = exchangeRates[toCurrency];
             //calculate converted amount
             setConvertedAmount(parsedAmount * rate);
+            //clear any previous error
+            setError(null)
         } else {
             setError("The conversion rate is not available for the selected currencies.");
         }
@@ -89,6 +94,24 @@ const HomePage = () => {
             alert("Favorite pair saved successfully")
         } else {
             alert("This pair is already saved as a favorite");
+        }
+    };
+    //handles network error
+    const handleNetworkError = (error) => {
+        if (!error.response) {
+            setError("network  error: please check your internet connection and try again.")
+        } else {
+            //handle hhtps error from the Api response
+            switch (error.response.status) {
+                case 404:
+                    setError("The requested data could not be found. Please try again later.");
+                    break;
+                    case 500:
+                        setError("Server error: something went wrong on the server. Please try again later.");
+                        break;
+                        default:
+                            setError("An error occured. Please try again");
+            }
         }
     };
 
