@@ -114,6 +114,12 @@ const HomePage = () => {
             }
         }
     };
+    //function to handle favorite pair click
+    const handleFavoriteClick = (from, to) => {
+        setFromCurrency(from);
+        setToCurrency(to);
+        convertCurrency();
+    };
 
     return (
         <div className={`flex justify-center items-center min-h-screen bg-cover bg-no-repeat bg-center ${darkMode ? 'bg-gray-900' : ''}`} style={{ backgroundImage: `url(${backgroundImage})`}}>
@@ -128,7 +134,12 @@ const HomePage = () => {
                         <ul className="list-disc pl-6">
                             {favoritePairs.map((pair, index) => (
                                <li key={index} className={`${darkMode ? 'text-white' : 'text-black'}`}>
+                                <button
+                                onClick={() => handleFavoriteClick(pair.from, pair.to)}
+                                    className="text-blue-500:underline"
+                                    >
                                 {pair.from} → {pair.to}
+                                </button>
                                </li> 
                             ))}
                         </ul>
