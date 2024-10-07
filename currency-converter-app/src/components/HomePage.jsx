@@ -136,7 +136,7 @@ const HomePage = () => {
                                <li key={index} className={`${darkMode ? 'text-white' : 'text-black'}`}>
                                 <button
                                 onClick={() => handleFavoriteClick(pair.from, pair.to)}
-                                    className="text-blue-500:underline"
+                                    className="text-blue-700 hover:underline"
                                     >
                                 {pair.from} → {pair.to}
                                 </button>
