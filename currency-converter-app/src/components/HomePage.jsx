@@ -32,9 +32,7 @@ const HomePage = () => {
                 //data loaded
                 setLoading(false);
             } catch (error) {
-                console.error("Error fetching exchange rates:", error);
-                setError("Failed to fetch exchange rates. Please try again later.");
-                setLoading(false);
+                handleNetworkError(error)
             }
         };
         fetchExchangesRates();
